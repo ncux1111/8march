@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ты любишь меня?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background"></div> <!-- Фон с гифкой -->
+    <div class="container">
+        <h1>Ты любишь меня?</h1>
+        <div class="buttons">
+            <button id="yes-btn">Да</button>
+            <button id="no-btn">Нет</button>
+        </div>
+        <div id="banner" class="banner">Подумай еще раз!</div> <!-- Баннер -->
+    </div>
+
+    <script>
+        // Обработка нажатия на кнопку "Да"
+        document.getElementById('yes-btn').addEventListener('click', function() {
+            window.location.href = 'congrats.html'; // Переход на страницу с поздравлением
+        });
+
+        // Обработка нажатия на кнопку "Нет"
+        document.getElementById('no-btn').addEventListener('click', function() {
+            const noBtn = document.getElementById('no-btn');
+            const banner = document.getElementById('banner');
+
+            // Кнопка "Нет" уезжает
+            noBtn.style.transition = 'all 0.5s ease';
+            noBtn.style.transform = 'translateX(2000px)';
+            noBtn.style.opacity = '0';
+
+            // Показываем баннер
+            banner.style.display = 'block';
+            setTimeout(() => {
+                banner.style.opacity = '1';
+            }, 10); // Небольшая задержка для плавного появления
+
+            // Баннер исчезает через 3 секунды
+            setTimeout(() => {
+                banner.style.opacity = '0';
+                setTimeout(() => {
+                    banner.style.display = 'none';
+                }, 500); // Задержка перед скрытием
+            }, 3000); // Баннер исчезнет через 3 секунды
+        });
+    </script>
+</body>
+</html>
